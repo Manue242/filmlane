@@ -1,19 +1,18 @@
 
-
+DELIMITER //
 CREATE OR REPLACE PROCEDURE InsererUtilisateur(
-    p_Id_user INT,
-    p_nom_user VARCHAR2,
-    p_mot_de_passe VARCHAR2,
-    p_email VARCHAR2
+    p_nom_user VARCHAR(50),
+    p_mot_de_passe VARCHAR(255),
+    p_email VARCHAR(100)
 )
 AS
 BEGIN
-    INSERT INTO Utilisateur (Id_user, nom_user, mot_de_passe, email)
-    VALUES (p_Id_user, p_nom_user, p_mot_de_passe, p_email);
+    INSERT INTO Utilisateur (nom_user, mot_de_passe, email)
+    VALUES (p_nom_user, p_mot_de_passe, p_email);
     
-    COMMIT; -- Confirmer la transaction
-END InsererUtilisateur;
-/
+    COMMIT; 
+END //
+
 
 
 CREATE OR REPLACE PROCEDURE InsererParticipationDebat(
@@ -26,8 +25,7 @@ BEGIN
     VALUES (p_Id_user, p_Id_debat);
     
     COMMIT; -- Confirmer la transaction
-END InsererParticipationDebat;
-/
+END //
 
 
 CREATE OR REPLACE PROCEDURE InsererParticipationEven(
@@ -40,5 +38,4 @@ BEGIN
     VALUES (p_Id_even, p_Id_user);
     
     COMMIT; -- Confirmer la transaction
-END InsererParticipationEven;
-/
+END //
