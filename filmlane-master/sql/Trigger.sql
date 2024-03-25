@@ -12,6 +12,18 @@ END;
 
 DELIMITER ;
 
+DELIMITER //
+
+CREATE TRIGGER before_insert_acteur
+BEFORE INSERT ON Acteur
+FOR EACH ROW
+BEGIN
+    IF NEW.date_naiss_acteur > CURDATE() THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La date de naissance ne peut pas être supérieure à la date actuelle.';
+    END IF;
+END;
+//
+
 
 DELIMITER //
 
