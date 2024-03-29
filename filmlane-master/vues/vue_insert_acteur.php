@@ -54,13 +54,14 @@
         <tr>
 			<td> Film  </td>
 			<td>
-			<select name="idprofesseur">
+			<select name="Id_film">
 				<?php
-				foreach ($lesProfesseurs as $unProfesseur) {
+				foreach ($lesFilms as $unFilm) 
+                {
 					echo "<option value='"; 
-					echo $unProfesseur['idprofesseur']; 
+					echo $unFilm['Id_Film']; 
 					echo "'>"; 
-					echo $unProfesseur['nom']; 
+					echo $unFIlm['nom']; 
 					echo "</option>";
 				}
 				?>
