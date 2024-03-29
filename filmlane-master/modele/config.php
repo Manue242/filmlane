@@ -1,14 +1,20 @@
 <?php
 $servername = "localhost";
-$username = "votre_nom_utilisateur";
-$password = "votre_mot_de_passe";
-$database = "cinémathèque";
+$username = "root";
+$password = "";
+$database = "cinematheque";
 
 // Connexion à la base de données
-$conn = new mysqli($servername, $username, $password, $database);
+$connexion = new mysqli($servername, $username, $password, $database);
 
-// Vérifier la connexion
-if ($conn->connect_error) {
-    die("Échec de la connexion à la base de données : " . $conn->connect_error);
+// Vérification de la connexion
+if ($connexion->connect_error) {
+    die("La connexion à la base de données a échoué : " . $connexion->connect_error);
+} else {
+    echo "La connexion à la base de données a réussi !";
 }
+
+// Fermeture de la connexion
+//$connexion->close();
+
 ?>
