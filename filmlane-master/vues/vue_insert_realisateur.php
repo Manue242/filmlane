@@ -1,4 +1,4 @@
-<h3>Ajout d'un nouvel acteur</h3>
+<h3>Ajout d'un nouveau réalisateur</h3>
 <form method="post">
 	<table>
 		<tr>
