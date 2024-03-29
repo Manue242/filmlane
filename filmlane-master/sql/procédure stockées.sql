@@ -1,31 +1,52 @@
 
 DELIMITER //
-CREATE OR REPLACE PROCEDURE InsererUtilisateur(
-    p_nom_user VARCHAR(50),
-    p_mot_de_passe VARCHAR(255),
-    p_email VARCHAR(100)
+
+CREATE PROCEDURE InsererUtilisateur(
+    IN p_Id_user INT,
+    IN p_nom_user VARCHAR(255),
+    IN p_mot_de_passe VARCHAR(255),
+    IN p_email VARCHAR(255)
 )
-AS
 BEGIN
-    INSERT INTO Utilisateur (nom_user, mot_de_passe, email)
-    VALUES (p_nom_user, p_mot_de_passe, p_email);
-    
-    COMMIT; 
-END //
+    INSERT INTO Utilisateur (Id_user, nom_user, mot_de_passe, email)
+    VALUES (p_Id_user, p_nom_user, p_mot_de_passe, p_email);
+END;
+//
+
+DELIMITER ;
+
+CALL InsererUtilisateur(1, 'John', 'motdepasse', 'john@example.com');
 
 
 
-CREATE OR REPLACE PROCEDURE InsererParticipationDebat(
-    p_Id_user INT,
-    p_Id_debat INT
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS InsererParticipationDebat;
+CREATE PROCEDURE InsererParticipationDebat(
+    IN p_Id_user INT,
+    IN p_Id_debat INT
 )
-AS
 BEGIN
     INSERT INTO ParticipationDebat (Id_user, Id_debat)
     VALUES (p_Id_user, p_Id_debat);
-    
-    COMMIT; -- Confirmer la transaction
+END;
+//
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE InsererParticipationDebat(
+    p_Id_user INT,
+    p_Id_debat INT
+)
+BEGIN
+    INSERT INTO ParticipationDebat (Id_user, Id_debat)
+    VALUES (p_Id_user, p_Id_debat);
 END //
+
+DELIMITER ;
 
 
 CREATE OR REPLACE PROCEDURE InsererParticipationEven(
